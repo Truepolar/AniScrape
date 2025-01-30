@@ -1,0 +1,5 @@
+beautifulsoup4==4.12.3
+numpy==2.2.2
+packaging==24.2
+pipdeptree==2.25.0
+soupsieve==2.6
