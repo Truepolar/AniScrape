@@ -21,9 +21,6 @@ class Question():
         print(self.question)
         print(self.options)
 
-    def weight_question(self):
-        print(self.question)
-
 
 q1 = Question("1.Political alignment", " a.Left \n b.Right", {"a", "b"}, 0)
 q2 = Question("2.Gender", " a.Male\n b.Female", {"a", "b"}, 0)
@@ -59,6 +56,33 @@ print('_' * 40)
 print("Please rank the questions in order of least important to most important")
 
 for q in all_questions:
-    prompt = f"""
-    {q.weight_question()}
-"""
+    print(q.question)
+
+wcheck = []
+for i in range(1,len(all_questions) + 1):
+    wcheck.append(i)
+
+print(wcheck)
+
+while true:
+
+       uw = input("Ranking from most to least").split()
+
+
+# mylist = [ "a", "b", "a"]
+#
+# myset= set(mylist)
+# myset.add("a")
+# myset.add("az")
+# myset.add("az")
+#
+# print(mylist)
+#
+# print(myset)
+#
+# for i in range(1,10, 3) :
+#     print(i)
+
+
+
+
