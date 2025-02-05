@@ -1,4 +1,6 @@
 import numpy as np
+import collections
+
 
 u1 = []
 w1 = []
@@ -60,13 +62,39 @@ for q in all_questions:
 
 wcheck = []
 for i in range(1,len(all_questions) + 1):
-    wcheck.append(i)
+    wcheck.append('i')
 
 print(wcheck)
 
-while true:
+uw = []
+gay = True
 
-       uw = input("Ranking from most to least").split()
+while gay == True:
+
+    uw = input("Ranking from most to least (seperate ans with comma)").split(",")
+   # uw.replace("'", "")
+    if wcheck != sorted(uw):
+
+        print(sorted(uw))
+        gay = True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # mylist = [ "a", "b", "a"]
