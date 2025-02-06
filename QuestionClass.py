@@ -1,6 +1,6 @@
 import numpy as np
 import collections
-
+import sqlite3
 
 u1 = []
 w1 = []
@@ -62,34 +62,32 @@ for q in all_questions:
 
 wcheck = []
 for i in range(1,len(all_questions) + 1):
-    wcheck.append('i')
+    wcheck.append(i)
 
 print(wcheck)
 
 uw = []
 gay = True
 
+
 while gay == True:
-
     uw = input("Ranking from most to least (seperate ans with comma)").split(",")
-   # uw.replace("'", "")
-    if wcheck != sorted(uw):
+    uw = list(map(int, uw))
 
-        print(sorted(uw))
-        gay = True
+    if wcheck == sorted(uw):
 
+        gay = False
 
+print (uw)
 
+#writing weight to w1, lowest index is highest weight
 
-
-
-
-
-
+for i in wcheck:
+    w1.append(uw.index(i))
 
 
 
-
+print(w1)
 
 
 
@@ -97,19 +95,13 @@ while gay == True:
 
 
 
-# mylist = [ "a", "b", "a"]
-#
-# myset= set(mylist)
-# myset.add("a")
-# myset.add("az")
-# myset.add("az")
-#
-# print(mylist)
-#
-# print(myset)
-#
-# for i in range(1,10, 3) :
-#     print(i)
+
+
+
+
+
+
+
 
 
 
