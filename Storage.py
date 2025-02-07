@@ -1,25 +1,19 @@
-import sqlite3
 
-conn = sqlite3('Userdb')
-c = conn.cursor()
-c.execute("""CREATE TABLE user(
-
-
+import dotenv
+import psycopg2
+from dotenv import load_dotenv
+from decouple import config
 
 
-)""")
-class Store:
 
-   def __init__(self,user,passw,qans,qweight):
-    self.username = user
-    self.password = passw
-    self.questionans = qans
-    self.questionweight = qweight
+database = config("database"),
+host = config("host"),
+user = config("user"),
+password = config("password"),
+port = config("port")
 
-   def keep(self,user,password,questionans,questionweight):
-
-       Level1S = questionweight.index(1)
-
-       c.execute
-
-
+conn = psycopg2.connect(database=database,
+                        host=host,
+                        user=user,
+                        password=password,
+                        port=port)

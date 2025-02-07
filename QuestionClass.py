@@ -1,6 +1,7 @@
 import numpy as np
 import collections
-import sqlite3
+from ResultsProcessing import *
+from Storage import *
 
 u1 = []
 w1 = []
@@ -83,26 +84,11 @@ print (uw)
 #writing weight to w1, lowest index is highest weight
 
 for i in wcheck:
-    w1.append(uw.index(i))
+    w1.append(uw.index(i)+1)
 
+wip = Processing(w1)
 
+print (w1)
 
-print(w1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+wip.inpro(w1)
 
