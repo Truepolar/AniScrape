@@ -3,3 +3,4 @@ numpy==2.2.2
 packaging==24.2
 pipdeptree==2.25.0
 soupsieve==2.6
+psycopg2==2.9.10
