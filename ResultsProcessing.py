@@ -5,8 +5,7 @@ from decouple import config
 
 class Processing:
 
-
-    def __init__(self,inw,w1,u1,ticket1,ticket2,userid):
+    def __init__(self,w1,u1):
         self.inweight = inw
         self.w1 = w1
         self.u1 = u1
@@ -14,13 +13,7 @@ class Processing:
         self.ticket2 = ticket2
         self.userid = userid
 
-    def inpro(self,inweight):
-          ticket1 = inweight.index(1)
-          ticket2 = inweight.index(2)
-
-          print(ticket1,ticket2)
-
-    def storagein(self,userid,w1,u1,ticket1,ticket2):
+    def storagein(self,userid,w1,u1):
         database = config('database')
         host = config('host')
         user = config('user')
@@ -34,7 +27,7 @@ class Processing:
                                 port=port
                                 )
         cur = conn.cursor()
-        cur.execute("INSERT INTO questiondata(userid,questionans.questionweight,ticker1,ticker2) VALUES (%s,%s,%s,%s,%s,)",(userid,u1,w1,ticket1,ticket2))
+        cur.execute("")
 
     def newid(self):
         database = config('database')
@@ -56,6 +49,4 @@ class Processing:
                                 password=password,
                                 port=port
                                 )
-        userid = .max(userid)
-
 

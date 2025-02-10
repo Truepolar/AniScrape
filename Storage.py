@@ -21,13 +21,31 @@ conn = psycopg2.connect(host=host,
 
 cur = conn.cursor()
 
+
 cur.execute("""
 CREATE TABLE IF NOT EXISTS questiondata (
-userid INT PRIMARY KEY,
-questionans STR,
-questionweight INT,
-ticket1 INT,
-ticket2 INT);
+QID INT PRIMARY KEY,
+Question VARCHAR(255)
+);
+""")
+
+cur.execute("""
+CREATE TABLE IF NOT EXISTS userdata (
+UID INT PRIMARY KEY,
+name VARCHAR(255),
+password VARCHAR(255),
+age INT,
+gender VARCHAR(255)
+);
+""")
+
+cur.execute("""
+CREATE TABLE IF NOT EXISTS answerdata (
+UID INT,
+QID INT,
+userans VARCHAR(255),
+CONSTRAINT pk PRIMARY KEY (UID,QID)
+);
 """)
 
 conn.commit()
