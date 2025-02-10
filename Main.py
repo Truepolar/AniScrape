@@ -4,6 +4,7 @@ import psycopg2
 from decouple import config
 from ResultsProcessing import *
 from QuestionClass import *
+from UserProcessing import *
 
 inw = 0
 ticket1 = 0
@@ -20,7 +21,11 @@ q5 = Question("5.interests","a.Reading \n b.Music \n c.Making music \n d.Gaming 
 
 all_questions = [q1,q2,q3,q4,q5]
 
-store = Processing(userid,w1,u1,inw,ticket1,ticket2)
+user = UserData()
+
+user.get_user()
+
+user.storeUD()
 
 
 for q in [q1, q2,q3,q4,q5]:
