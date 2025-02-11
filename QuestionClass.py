@@ -23,3 +23,5 @@ class Question():
     def askquestion(self):
         print(self.question)
         print(self.options)
+
+

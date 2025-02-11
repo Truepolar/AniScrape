@@ -4,7 +4,7 @@ import psycopg2
 from decouple import config
 from UserProcessing import *
 
-
+#
 # database = config('database')
 # host = config('host')
 # user = config('user')
@@ -19,7 +19,7 @@ from UserProcessing import *
 #                         )
 # cur = conn.cursor()
 #
-# cur.execute('DELETE FROM userdata')
+# cur.execute('DROP TABLE questiondata')
 #
 # conn.commit()
 #

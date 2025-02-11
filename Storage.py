@@ -25,7 +25,9 @@ cur = conn.cursor()
 cur.execute("""
 CREATE TABLE IF NOT EXISTS questiondata (
 QID INT PRIMARY KEY,
-Question VARCHAR(255)
+Question VARCHAR(255),
+Options VARCHAR(255),
+Checks INT
 );
 """)
 
