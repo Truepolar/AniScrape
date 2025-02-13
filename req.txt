@@ -6,3 +6,4 @@ soupsieve==2.6
 psycopg2==2.9.10
 python-decouple==3.8
 python-dotenv==1.0.1
+sqlalchemy==2.0.38

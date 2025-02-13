@@ -1,7 +1,7 @@
 import numpy as np
 import collections
 from ResultsProcessing import *
-from Storage import *
+from initstorage import *
 
 u1 = []
 w1 = []

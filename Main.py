@@ -13,6 +13,9 @@ userid = 0
 u1 = []
 w1 = []
 
+
+
+
 q1 = Question("1.Political alignment", " a.Left \n b.Right", {"a", "b"}, 0)
 q2 = Question("2.Gender", " a.Male\n b.Female", {"a", "b"}, 0)
 q3 = Question("3.Monthly income","a.0-3k \n b.3k-5k \n c.5k-8k \n d.8k-12k \n e.12k and above \n f.Does not matter",{"a","b","c","d","e","f"},0)

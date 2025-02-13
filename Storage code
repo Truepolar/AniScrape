@@ -10,8 +10,6 @@ user = config('user')
 password = config('password')
 port = config('port', cast=int)
 
-print(host)
-
 conn = psycopg2.connect(host=host,
                         database=database,
                         user=user,
@@ -27,7 +25,7 @@ CREATE TABLE IF NOT EXISTS questiondata (
 QID INT PRIMARY KEY,
 Question VARCHAR(255),
 Options VARCHAR(255),
-Checks INT
+Checks VARCHAR(255)
 );
 """)
 
@@ -61,4 +59,12 @@ class Inout:
     def __init__(self,level):
         self.level = level
 
+-----------------------------------------------------
+env storage
 
+database=postgres
+host=localhost
+user=postgres
+password=greg.jr
+port=5432
+-----------------------------------------------------
