@@ -2,7 +2,7 @@
 # from dotenv import load_dotenv
 # import psycopg2
 # from decouple import config
-# from userstore import *
+from userstore import *
 from questionask import *
 from userask import *
 
@@ -21,12 +21,11 @@ q5 = Question("5.interests", "a.Reading \n b.Music \n c.Making music \n d.Gaming
 
 all_questions = [q1, q2, q3, q4, q5]
 
-# user = UserData()
-#
-# user.get_user()
-#
-# user.storeUD()
+user = UserData()
 
+user.get_user()
+
+Ustore.storeu(user)
 
 for q in [q1, q2, q3, q4, q5]:
     prompt = f"""
@@ -46,8 +45,6 @@ for q in [q1, q2, q3, q4, q5]:
     print('_' * 40)
 
 print(u1)
-
-# Weight for question class (new naming convention)
 
 print('_' * 40)
 

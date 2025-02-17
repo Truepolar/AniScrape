@@ -3,13 +3,13 @@ from dotenv import load_dotenv
 import psycopg2
 from decouple import config
 
+
 class UserData:
-    def __init__(self,name = None,password = None,age = None,gender = None):
+    def __init__(self, name=None, password=None, age=None, gender=None):
         self.name = name
         self.password = password
         self.age = age
         self.gender = gender
-
 
     def get_user(self):
         print('Hello new user.\nWhat is your name?')
@@ -32,7 +32,7 @@ class UserData:
         self.age = age
         print("What is your gender, Male or Female?")
         while True:
-            genderoptions = ["Male","male","Female","female"]
+            genderoptions = ["Male", "male", "Female", "female"]
             gender = input("Gender : ")
             if gender not in genderoptions:
                 return True
@@ -40,3 +40,5 @@ class UserData:
                 break
         self.gender = gender
 
+    def __repr__(self):
+        return self.name, self.password, self.age, self.gender
