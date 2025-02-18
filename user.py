@@ -4,7 +4,7 @@ import psycopg2
 from decouple import config
 
 
-class UserData:
+class User:
     def __init__(self, name=None, password=None, age=None, gender=None):
         self.name = name
         self.password = password

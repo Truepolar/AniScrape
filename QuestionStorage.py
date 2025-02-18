@@ -2,7 +2,7 @@ import dotenv
 from dotenv import load_dotenv
 import psycopg2
 from decouple import config
-from questionask import *
+from question import *
 
 database = config('database')
 host = config('host')

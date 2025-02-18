@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class UserS(Base):
+class UserData(Base):
     __tablename__ = "userdata"
 
     uid: Mapped[int] = mapped_column(primary_key=True)
@@ -19,27 +19,27 @@ class UserS(Base):
     password: Mapped[str]
     age: Mapped[int]
     gender: Mapped[str]
-    userl: Mapped["AnswerS"] = relationship(back_populates="answerl1")
+    userl: Mapped["AnswerData"] = relationship(back_populates="answerl1")
 
 
-class QuestionS(Base):
+class QuestionData(Base):
     __tablename__ = "questiondata"
 
     qid: Mapped[int] = mapped_column(primary_key=True)
     question: Mapped[str]
     options: Mapped[JSON] = mapped_column(type_=JSON, nullable=False)
-    questionl: Mapped["AnswerS"] = relationship(back_populates="answerl2")
+    questionl: Mapped["AnswerData"] = relationship(back_populates="answerl2")
 
 
-class AnswerS(Base):
+class AnswerData(Base):
     __tablename__ = "answerdata"
     aid: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey('userdata.uid'))
     question_id: Mapped[int] = mapped_column(ForeignKey('questiondata.qid'))
     answer: Mapped[str]
     weight: Mapped[int]
-    answerl1: Mapped[list["UserS"]] = relationship(back_populates="userl")
-    answerl2: Mapped[list["QuestionS"]] = relationship(back_populates="questionl")
+    answerl1: Mapped[list["UserData"]] = relationship(back_populates="userl")
+    answerl2: Mapped[list["QuestionData"]] = relationship(back_populates="questionl")
 
 
 Base.metadata.create_all(engine)
