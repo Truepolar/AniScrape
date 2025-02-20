@@ -9,7 +9,7 @@ class QuestionStore:
         self.question = question
         self.options = options
 
-    def storeq(self):
+    def store_question(self):
         url = config('url')
         engine = create_engine(url, echo=True)
         Session = sessionmaker(bind=engine)
@@ -46,4 +46,4 @@ q5 = QuestionStore("5.interests", {"a": "a.Reading",
 
 all_questions = [q1, q2, q3, q4, q5]
 for q in all_questions:
-    q.storeq()
+    q.store_question()
