@@ -9,14 +9,10 @@ class UserStore:
     def __init__(self):
         pass
     @staticmethod
-    def store_user(user:User):
-        url = config('url')
-        engine = create_engine(url, echo=True)
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        user = UserData(name=user.name, password=user.password, age=user.age, gender=user.gender)
-
-        session.add(user)
-        session.commit()
+    def store_user(user:RegisterUser):
+        with get_session as sess:
+            user = UserData(name=user.name, password=user.password, age=user.age, gender=user.gender)
+            sess.add(user)
+            sess.commit()
 
 

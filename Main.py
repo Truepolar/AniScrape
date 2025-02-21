@@ -3,7 +3,7 @@ from question import *
 from register_user import *
 from answer_store import *
 
-User.initial_page()
+RegisterUser.initial_page()
 
 # -------------------------------
 

@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, inser
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker, mapped_column, Mapped, DeclarativeBase, Session
 from decouple import config
 from initstorage import *
+from create_engine import *
 
 
 class QuestionStore:
@@ -10,14 +11,10 @@ class QuestionStore:
         self.options = options
 
     def store_question(self):
-        url = config('url')
-        engine = create_engine(url, echo=True)
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        question = QuestionData(question=self.question, options=self.options)
-
-        session.add(question)
-        session.commit()
+        with get_session as sess:
+            question = QuestionData(question=self.question, options=self.options)
+            sess.add(question)
+            sess.commit()
 
 
 q1 = QuestionStore("1.Political alignment", {"a": "a.Left",

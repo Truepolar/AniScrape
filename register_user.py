@@ -3,9 +3,10 @@ from sqlalchemy.orm import declarative_base, relationship, sessionmaker, mapped_
 from decouple import config
 from decouple import config
 from initstorage import *
+from create_engine import get_session
 
 
-class User:
+class RegisterUser:
     def __init__(self, uid=None, name=None, password=None, age=None, gender=None):
         self.uid = uid
         self.name = name
@@ -41,25 +42,19 @@ class User:
             else:
                 break
         self.gender = gender
-        url = config('url')
-        engine = create_engine(url, echo=True)
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        name = input('please enter your name')
-        stmt = select(UserData).where(UserData.name.in_([name]))
-        for row in session.scalars(stmt):
-            print(row.uid)
-            self.uid = row.uid
+        with get_session() as sess:
+            name = input('please enter your name')
+            stmt = select(UserData).where(UserData.name.in_([name]))
+            for row in sess.scalars(stmt):
+                print(row.uid)
+                self.uid = row.uid
 
     def identify_user(self):
-        url = config('url')
-        engine = create_engine(url, echo=True)
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        name = input('please enter your name')
-        stmt = select(UserData).where(UserData.name.in_([name]))
-        for row in session.scalars(stmt):
-            print(row.uid)
+        with get_session() as sess:
+            name = input('please enter your name')
+            stmt = select(UserData).where(UserData.name.in_([name]))
+            for row in sess.scalars(stmt):
+                print(row.uid)
 
     @staticmethod
     def initial_page():
@@ -73,11 +68,11 @@ class User:
                 print("Please try again")
 
         if val == "n":
-            user = User()
-            User.new_user(user)
+            user = RegisterUser()
+            RegisterUser.new_user(user)
         else:
-            user = User()
-            User.identify_user(user)
+            user = RegisterUser()
+            RegisterUser.identify_user(user)
 
     def __repr__(self):
         return self.name, self.password, self.age, self.gender, self.uid

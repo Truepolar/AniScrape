@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker, mapped_column, Mapped, DeclarativeBase
 from decouple import config
-
+from answer_store import *
 from initstorage import QuestionData
 
 u1 = []
@@ -37,6 +37,9 @@ class Question():
                 else:
                     print('dumb ass')
             print('\n-------------------------------------')
+            AnswerStore.store_answer()
+
+
 
     @staticmethod
     def askweight():
@@ -45,7 +48,7 @@ class Question():
         Session = sessionmaker(bind=engine)
         session = Session()
         stmt = select(QuestionData)
-        print("Please rank the questions in order of least important to most important")
+        print("Please rank the questions in order of most important to least important")
         for row in session.scalars(stmt):
             print(*row.question)
         gate = []
