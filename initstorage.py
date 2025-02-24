@@ -41,8 +41,4 @@ class AnswerData(Base):
     answerl1: Mapped[list["UserData"]] = relationship(back_populates="userl")
     answerl2: Mapped[list["QuestionData"]] = relationship(back_populates="questionl")
 
-    def where(self, aid):
-        pass
-
-
 Base.metadata.create_all(engine)
