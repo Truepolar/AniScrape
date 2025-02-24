@@ -17,6 +17,6 @@ class AnswerStore:
         for i in range(0, 5):
             val = weight[i]
             with get_session() as sess:
-                stmt = update(AnswerData).where(AnswerData.question_id == val, AnswerData.user_id == uid).values(weight=i)
+                stmt = update(AnswerData).where(AnswerData.question_id == val, AnswerData.user_id == uid).values(weight=int(i))
                 sess.add(stmt)
                 sess.commit()
