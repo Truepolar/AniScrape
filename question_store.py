@@ -11,7 +11,7 @@ class QuestionStore:
         self.options = options
 
     def store_question(self):
-        with get_session as sess:
+        with get_session() as sess:
             question = QuestionData(question=self.question, options=self.options)
             sess.add(question)
             sess.commit()

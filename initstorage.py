@@ -19,6 +19,7 @@ class UserData(Base):
     password: Mapped[str]
     age: Mapped[int]
     gender: Mapped[str]
+    email: Mapped[str] = mapped_column(unique=True)
     userl: Mapped["AnswerData"] = relationship(back_populates="answerl1")
 
 
@@ -37,7 +38,7 @@ class AnswerData(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey('userdata.uid'))
     question_id: Mapped[int] = mapped_column(ForeignKey('questiondata.qid'))
     answer: Mapped[str]
-    weight: Mapped[int]
+    weight: Mapped[int] = mapped_column(nullable=True)
     answerl1: Mapped[list["UserData"]] = relationship(back_populates="userl")
     answerl2: Mapped[list["QuestionData"]] = relationship(back_populates="questionl")
 

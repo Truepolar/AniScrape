@@ -44,6 +44,9 @@ class RegisterUser:
             else:
                 break
         user.gender = gender
+        print("Please input your email\nDo not reuse the same email\n")
+        email = input()
+        user.email = email
         UserStore.store_user(user)
 
     @staticmethod
