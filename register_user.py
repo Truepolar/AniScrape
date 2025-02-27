@@ -5,6 +5,7 @@ from decouple import config
 from initstorage import *
 from create_engine import get_session
 from user_store import *
+from sqlalchemy import exc
 
 class RegisterUser:
     def __init__(self, uid=None, name=None, password=None, age=None, gender=None):
@@ -44,10 +45,20 @@ class RegisterUser:
             else:
                 break
         user.gender = gender
-        print("Please input your email\nDo not reuse the same email\n")
-        email = input()
-        user.email = email
-        UserStore.store_user(user)
+        val = True
+        while val == True:
+            print("Please input your email\nDo not reuse the same email\n")
+            email = input()
+            user.email = email
+            try:
+                UserStore.store_user(user)
+                val = False
+            except exc.IntegrityError:
+                print("email is already in use")
+
+
+
+
 
     @staticmethod
     def initial_page():
