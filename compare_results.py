@@ -9,6 +9,7 @@ class CompareResults:
 
     @staticmethod
     def compare(uid):
+        ask_gender = input("Are you looking for Male or Females, type 'male' for males and 'female' for females")
         with get_session() as sess:
             stmt = select(UserData, AnswerData).join(AnswerData, UserData.uid == AnswerData.user_id).where(
                 UserData.uid == uid, AnswerData.weight == 0)
@@ -18,7 +19,7 @@ class CompareResults:
 
         with get_session() as sess:
             stmt = select(UserData, AnswerData).join(AnswerData, UserData.uid == AnswerData.user_id).where(
-                AnswerData.weight == 0, AnswerData.question_id == first_question, AnswerData.answer == first_answer)
+                AnswerData.weight == 0, AnswerData.question_id == first_question, AnswerData.answer == first_answer, UserData.gender == ask_gender)
             list_of_users_1 = []
             list_of_users_email_1 = []
             for row in sess.scalars(stmt):
@@ -28,7 +29,7 @@ class CompareResults:
 
         with get_session() as sess:
             stmt = select(UserData, AnswerData).join(AnswerData, UserData.uid == AnswerData.user_id).where(
-                AnswerData.weight == 1, AnswerData.question_id == first_question, AnswerData.answer == first_answer)
+                AnswerData.weight == 1, AnswerData.question_id == first_question, AnswerData.answer == first_answer, UserData.gender == ask_gender)
             list_of_users_2 = []
             list_of_users_email_2 = []
             for row in sess.scalars(stmt):
@@ -44,8 +45,3 @@ class CompareResults:
 
         print(list_of_users_2)
         print(list_of_users_email_2)
-
-
-
-
-CompareResults.compare(1)
