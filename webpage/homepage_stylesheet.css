@@ -32,8 +32,26 @@ p1{
     font-size:40px;
     background-color: #21eb35;
     border-color: black;
-    margin: auto;
-    margin-top: 30%;
-    display: block;
 }
+
+#button1{
+    margin: 0;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#button2{
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+
 
